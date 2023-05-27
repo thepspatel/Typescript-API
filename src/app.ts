@@ -1,11 +1,13 @@
 import express,{Application, Request, Response} from 'express'
 import { body, check, validationResult } from 'express-validator';
 const userRoutes = require('./routes/userRoute');
+const webRoutes = require('./routes/webRoute');
 
 const app:Application = express();
 const port:number = 3000;
 
-app.post('/api',userRoutes)
+app.use('/api',userRoutes)
+app.use('/',webRoutes)
 
 
 app.listen(port, ()=>{
