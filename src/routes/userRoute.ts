@@ -1,21 +1,15 @@
 import express from 'express'
 const router = express.Router()
 const {registerValidation,loginValidation} = require('../rules/rules')
-const usercontrollers = require('./controller/usercontroller')
+const userservices = require('../services/userservice')
 
 
-router.post('/register',registerValidation,usercontrollers.register);
-router.post('/login',loginValidation,usercontrollers.login);
-router.get('/search',usercontrollers.search);
-router.get('/orders',usercontrollers.orders);
-router.get('/confirmed/orders',usercontrollers.confirmedorders);
-router.get('/completedorders',usercontrollers.completedorders);
-router.get('/acceptedorders',usercontrollers.acceptedorders);
-router.get('/uncomfirmedorders',usercontrollers.uncomfirmedorders);
-router.get('rejectedorders',usercontrollers.rejectedorders);
-router.get('getanalyticsdata',usercontrollers.analytics);
-router.post('newanalyticsdata',usercontrollers.newAnalyticsData);
-router.get('/shipment',usercontrollers.shipment);
-router.get('/shipmentID',usercontrollers.shipmentID);
+router.post('/register',registerValidation,userservices.register);
+router.post('/login',loginValidation,userservices.login);
+router.get('/search',userservices.search);
+router.get('getanalyticsdata',userservices.analytics);
+router.post('newanalyticsdata',userservices.newAnalyticsData);
+router.get('/shipment',userservices.shipment);
+router.get('/shipmentID',userservices.shipmentID);
 
 module.exports = router;

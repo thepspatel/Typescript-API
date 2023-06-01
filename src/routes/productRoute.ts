@@ -1,10 +1,10 @@
 import express from 'express'
 const routeer = express.Router()
-const usercontrollers = require('../controller/usercontroller')
+const userservices = require('../services/userservice')
 
-routeer.get('/product',usercontrollers.product)
-routeer.post('/updateproduct',usercontrollers.productbyid)
-routeer.delete('/deleteproduct',usercontrollers.product)
-routeer.put('/addproduct',usercontrollers.product)
+routeer.get('/product',userservices.product)
+routeer.post('/updateproduct',userservices.productbyid)
+routeer.delete('/deleteproduct',userservices.product)
+routeer.put('/addproduct',userservices.product)
 
 module.exports = routeer;

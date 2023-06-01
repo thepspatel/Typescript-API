@@ -1,8 +1,8 @@
 import express from 'express';
 const routerr = express();
-const usercontrollers = require('../controller/usercontroller');
+const userservices = require('../services/userservice');
 
-routerr.get('/Mail-verifcation',usercontrollers.verifyMail);
-routerr.get('OTP-Verification',usercontrollers.verifyOTP);
+routerr.get('/Mail-verifcation',userservices.verifyMail);
+routerr.get('OTP-Verification',userservices.verifyOTP);
 
 module.exports = routerr;

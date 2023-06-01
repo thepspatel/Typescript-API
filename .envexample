@@ -1,0 +1,9 @@
+DB_HOST = 'yourhost'
+DB_USER = 'username'
+DB_PASSWORD = 'yourpassword'
+DB_NAME = 'databasename'
+DB_PORT = portnumber
+SMTP_HOST=Host
+SMTP_MAIL = 'youremail'
+SMTP_PASSWORD = 'yourpassword'
+JWT_SECRET = 'nameofsecretkey'
