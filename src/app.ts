@@ -1,4 +1,4 @@
-import express,{Application, Request, Response} from 'express'
+import express,{Application, Request, Response} from  'express'
 import { body, check, validationResult } from 'express-validator';
 import connection from './config/dbconnection';
 import {json, urlencoded} from 'body-parser';

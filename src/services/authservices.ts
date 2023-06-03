@@ -1,4 +1,4 @@
-import express,{Request, Response} from 'express'
+import express,{Request, Response, response} from 'express'
 const { validationResult } = require('express-validator');
 const config = require('../config/config');
 const jwt = require('jsonwebtoken');
@@ -8,8 +8,8 @@ const createtoken = async (email) => {
 
         const token = await jwt.sign({ email: email }, config.secret_jwt);
         return token;
-    } catch (error:Error) {
-        res.status(400).send(error.message);
+    } catch (error) {
+        response.status(400).send(Error.message);
     }
 }
 

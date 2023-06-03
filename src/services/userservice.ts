@@ -11,6 +11,10 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 
 
+class services{
+  name:string
+}
+
 const register = (req:Request, res:Response) => {
 
     const errors = validationResult(req);
@@ -34,7 +38,7 @@ const register = (req:Request, res:Response) => {
 
                     if (err) {
                         return res.status(400).send({
-                            msg: err,
+                            msg: '' ,
                         });
                     }
                     else {
@@ -227,15 +231,7 @@ const product = async (req: Request, res: Response) => {
   }
   
    //get all orders
-  const orders =  async (req: Request, res: Response) => {
-    try {
-      const orders = await getAllOrders();
-      return res.json(orders);
-    } catch (error) {
-      console.error('Error occurred while fetching orders:', error);
-      return res.status(500).json({ error: 'Failed to fetch orders.' });
-    }
-  }
+  const orders = 
   async function getAllOrders(): Promise<Order[]> {
     const query = 'SELECT * FROM orders';
     const [rows] = await connection.execute(query);
@@ -243,25 +239,9 @@ const product = async (req: Request, res: Response) => {
   }
 
 //get confirmed orders
-const confirmedorders = async (req: Request, res: Response) => {
-    try {
-      const orders = await getOrdersByStatus('confirmed');
-      return res.json(orders);
-    } catch (error) {
-      console.error('Error occurred while fetching confirmed orders:', error);
-      return res.status(500).json({ error: 'Failed to fetch confirmed orders.' });
-    }
-  }
+const confirmedorders = 
   //get accepted orders
-  const acceptedorders = async (req: Request, res: Response) => {
-    try {
-      const orders = await getOrdersByStatus('accepted');
-      return res.json(orders);
-    } catch (error) {
-      console.error('Error occurred while fetching accepted orders:', error);
-      return res.status(500).json({ error: 'Failed to fetch accepted orders.' });
-    }
-  }
+  const acceptedorders = 
   async function getOrdersByStatus(status: string): Promise<Order[]> {
     const query = 'SELECT * FROM orders WHERE status = ?';
     const [rows] = await connection.execute(query, [status]);
@@ -269,25 +249,9 @@ const confirmedorders = async (req: Request, res: Response) => {
   }
 
   //get completed orders
-  const completedorders = async (req: Request, res: Response) => {
-    try {
-      const orders = await getOrdersByStatus('completed');
-      return res.json(orders);
-    } catch (error) {
-      console.error('Error occurred while fetching completed orders:', error);
-      return res.status(500).json({ error: 'Failed to fetch completed orders.' });
-    }
-  }
+  const completedorders = 
   //get uncomfirmed orders
-  const uncomfirmedorders = async (req: Request, res: Response) => {
-    try {
-      const orders = await getOrdersByStatus('unconfirmed');
-      return res.json(orders);
-    } catch (error) {
-      console.error('Error occurred while fetching unconfirmed orders:', error);
-      return res.status(500).json({ error: 'Failed to fetch unconfirmed orders.' });
-    }
-  }
+  const uncomfirmedorders = 
   //get rejected orders
   const rejectedorders = async (req: Request, res: Response) => {
     try {
@@ -368,6 +332,7 @@ const confirmedorders = async (req: Request, res: Response) => {
     return null;
   }
 
+
 module.exports = {
     register,
     verifyMail,
@@ -375,12 +340,6 @@ module.exports = {
     login,
     product,
     search,
-    orders,
-    confirmedorders,
-    completedorders,
-    acceptedorders,
-    rejectedorders,
-    uncomfirmedorders,
     analytics,
     newAnalyticsdata,
     shipment,
